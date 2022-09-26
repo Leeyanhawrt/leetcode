@@ -31,4 +31,25 @@ var twoSum = function (nums, target) {
   }
   return result
 };
-//
+
+// Time Complexity O(n log n)
+// This answer would not give the correct result as we would need to resort the whole array therefore their indexes would change
+var twoSum = function (nums, target) {
+  const result = [];
+  const sortedArray = nums.sort((a, b) => a - b)
+  let max = sortedArray.length - 1
+  let min = 0
+
+  while (max > min) {
+    let sum = sortedArray[max] + sortedArray[min]
+    if (sum === target) {
+      result.push(max, min)
+      return result
+    } else if (sum > result) {
+      max -= 1
+    } else {
+      min += 1
+    }
+  }
+  return result
+};
