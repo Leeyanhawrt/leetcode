@@ -17,6 +17,25 @@ Qustions:
 - Will array be sorted?
 */
 
+// Time Complexity O(n) 
+// Using dictionary data structure, loop through nums array and subtract target value. See if the result persists within the dictionary and return the indexes
+
+var twoSum = function (nums, target) {
+  const result = [];
+  const numDictionary = {};
+  for (let i = 0; i < nums.length; i++) {
+    numDictionary[nums[i]] = i
+  }
+  for (let j = 0; j < nums.length; j++) {
+    let searchResult = target - nums[j]
+    if (numDictionary[searchResult] && j !== numDictionary[searchResult]) {
+      result.push(j, numDictionary[searchResult])
+      return result
+    }
+  }
+  return result
+};
+
 // Time Complexity O(n^2) 
 // Initiate 2 for loops to check values of array, if the 2 values sum === target return the indexes 
 var twoSum = function (nums, target) {
